@@ -1,295 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Noore-e-Chandi | Premium Silver Jewellery</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noore-e-Chandi | Silver Jewellery</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- HEADER -->
 <header class="header">
-  <div class="logo">Noore-e-Chandi ✨</div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#products">Products</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<div class="logo">Noore-e-Chandi</div>
+
+<nav id="nav">
+<a href="index.html">Home</a>
+<a href="#women">Women</a>
+<a href="#men">Men</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 </header>
 
-<!-- HERO SECTION -->
-<section id="home" class="hero">
-  <div class="hero-text">
-    <h1>Elegance in Every Shine</h1>
-    <p>Premium handcrafted silver jewellery designed for timeless beauty.</p>
-    <a href="#products" class="btn">Explore Collection</a>
-  </div>
+
+<section class="hero">
+<h1>Elegance in Every Shine</h1>
+<p>Premium handcrafted silver jewellery</p>
+<a href="#women" class="btn">Explore Collection</a>
 </section>
 
-<!-- PRODUCTS SECTION -->
-<section id="products" class="products-section">
-  <h2>Our Collection</h2>
 
-  <div id="productsContainer" class="products-grid">
+<section id="women" class="section">
 
-    <!-- PRODUCT CARD TEMPLATE -->
+<h2>Women's Collection</h2>
 
-    <h2>Women's Collection</h2>
+<div class="grid">
 
-<div id="productsContainer" class="products-grid">
-
-<!-- PRODUCT 1 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Floral Silver Ring&price=499&img=ring1">
 <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638">
 <h3>Floral Silver Ring</h3>
-<p>Elegant handcrafted floral ring perfect for daily wear.</p>
 <p>₹499</p>
-<button onclick="openOrder('Floral Silver Ring',499)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 2 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Moon Pendant&price=799&img=pendant1">
 <img src="https://images.unsplash.com/photo-1608042314453-ae338d80c427">
-<h3>Moonlight Pendant</h3>
-<p>Minimal crescent moon pendant with premium finish.</p>
+<h3>Moon Pendant</h3>
 <p>₹799</p>
-<button onclick="openOrder('Moonlight Pendant',799)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 3 -->
-<div class="product-card">
+  <div class="card">
+<a href="product.html?name=Floral Silver Ring&price=499">
+<img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638">
+<h3>Floral Silver Ring</h3>
+<p>₹499</p>
+</a>
+</div>
+
+<div class="card">
+<a href="product.html?name=Moon Pendant&price=799">
+<img src="https://images.unsplash.com/photo-1608042314453-ae338d80c427">
+<h3>Moon Pendant</h3>
+<p>₹799</p>
+</a>
+</div>
+
+<div class="card">
+<a href="product.html?name=Crystal Drop Earrings&price=899">
 <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d">
 <h3>Crystal Drop Earrings</h3>
-<p>Elegant drop earrings for festive occasions.</p>
 <p>₹899</p>
-<button onclick="openOrder('Crystal Drop Earrings',899)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 4 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Infinity Love Ring&price=549">
 <img src="https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d">
 <h3>Infinity Love Ring</h3>
-<p>Symbolic infinity ring representing timeless elegance.</p>
 <p>₹549</p>
-<button onclick="openOrder('Infinity Love Ring',549)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 5 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Minimal Charm Bracelet&price=999">
 <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
 <h3>Minimal Charm Bracelet</h3>
-<p>Lightweight charm bracelet for everyday styling.</p>
 <p>₹999</p>
-<button onclick="openOrder('Minimal Charm Bracelet',999)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 6 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Starshine Stud Earrings&price=399">
 <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e">
 <h3>Starshine Stud Earrings</h3>
-<p>Classic star-inspired studs with polished finish.</p>
 <p>₹399</p>
-<button onclick="openOrder('Starshine Stud Earrings',399)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 7 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Royal Pearl Ring&price=1199">
 <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a">
 <h3>Royal Pearl Ring</h3>
-<p>Premium pearl centerpiece ring for elegant looks.</p>
 <p>₹1199</p>
-<button onclick="openOrder('Royal Pearl Ring',1199)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 8 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Silver Heart Pendant&price=699">
 <img src="https://images.unsplash.com/photo-1589128777073-263566ae5e4d">
 <h3>Silver Heart Pendant</h3>
-<p>Romantic heart pendant crafted in sterling silver.</p>
 <p>₹699</p>
-<button onclick="openOrder('Silver Heart Pendant',699)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 9 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Elegant Hoop Earrings&price=749">
 <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0">
 <h3>Elegant Hoop Earrings</h3>
-<p>Classic hoops with modern shine finish.</p>
 <p>₹749</p>
-<button onclick="openOrder('Elegant Hoop Earrings',749)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 10 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Vintage Silver Ring&price=599">
 <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638">
 <h3>Vintage Silver Ring</h3>
-<p>Vintage-inspired ring with timeless detailing.</p>
 <p>₹599</p>
-<button onclick="openOrder('Vintage Silver Ring',599)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 11 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Crystal Bloom Pendant&price=899">
 <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d">
 <h3>Crystal Bloom Pendant</h3>
-<p>Floral crystal pendant for graceful styling.</p>
 <p>₹899</p>
-<button onclick="openOrder('Crystal Bloom Pendant',899)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 12 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Celestial Ring&price=649">
 <img src="https://images.unsplash.com/photo-1608042314453-ae338d80c427">
 <h3>Celestial Ring</h3>
-<p>Moon and star engraved celestial design ring.</p>
 <p>₹649</p>
-<button onclick="openOrder('Celestial Ring',649)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 13 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Silver Petal Earrings&price=799">
 <img src="https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d">
 <h3>Silver Petal Earrings</h3>
-<p>Petal-shaped earrings with smooth polish finish.</p>
 <p>₹799</p>
-<button onclick="openOrder('Silver Petal Earrings',799)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 14 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Grace Chain Pendant&price=899">
 <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e">
 <h3>Grace Chain Pendant</h3>
-<p>Sleek chain pendant designed for modern elegance.</p>
 <p>₹899</p>
-<button onclick="openOrder('Grace Chain Pendant',899)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 15 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Classic Charm Bracelet&price=1099">
 <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
 <h3>Classic Charm Bracelet</h3>
-<p>Elegant charm bracelet for everyday sophistication.</p>
 <p>₹1099</p>
-<button onclick="openOrder('Classic Charm Bracelet',1099)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 16 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Minimal Silver Hoops&price=599">
 <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0">
 <h3>Minimal Silver Hoops</h3>
-<p>Minimal hoops crafted for subtle elegance.</p>
 <p>₹599</p>
-<button onclick="openOrder('Minimal Silver Hoops',599)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 17 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Royal Crystal Ring&price=1299">
 <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a">
 <h3>Royal Crystal Ring</h3>
-<p>Statement crystal ring with premium shine.</p>
 <p>₹1299</p>
-<button onclick="openOrder('Royal Crystal Ring',1299)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 18 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Heartline Pendant&price=699">
 <img src="https://images.unsplash.com/photo-1589128777073-263566ae5e4d">
 <h3>Heartline Pendant</h3>
-<p>Modern heartline pendant for daily elegance.</p>
 <p>₹699</p>
-<button onclick="openOrder('Heartline Pendant',699)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 19 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Moon Glow Earrings&price=749">
 <img src="https://images.unsplash.com/photo-1608042314453-ae338d80c427">
 <h3>Moon Glow Earrings</h3>
-<p>Soft glow earrings inspired by moonlight beauty.</p>
 <p>₹749</p>
-<button onclick="openOrder('Moon Glow Earrings',749)">Order Now</button>
+</a>
 </div>
 
-<!-- PRODUCT 20 -->
-<div class="product-card">
+<div class="card">
+<a href="product.html?name=Signature Silver Ring&price=899">
 <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638">
 <h3>Signature Silver Ring</h3>
-<p>Signature handcrafted silver ring with premium finish.</p>
 <p>₹899</p>
-<button onclick="openOrder('Signature Silver Ring',899)">Order Now</button>
+</a>
 </div>
 
 </div>
-
-
-<h2 style="margin-top:80px">Men's Collection</h2>
-
-<div class="products-grid">
-
-<div class="product-card">
-<img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
-<h3>Men's Jewellery Collection</h3>
-<p>Premium rings, chains & bracelets launching soon.</p>
-<p><strong>Coming Soon</strong></p>
-</div>
-
-</div>
-</section>
-
-<!-- ORDER MODAL -->
-<div id="orderModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-
-    <h2>Complete Your Order</h2>
-
-    <form id="orderForm">
-      <input type="text" placeholder="Full Name" required />
-      <input type="email" placeholder="Email Address" required />
-      <input type="tel" placeholder="Phone Number" required />
-      <textarea placeholder="Delivery Address" required></textarea>
-
-      <p id="selectedProduct"></p>
-
-      <a id="upiButton" class="btn">Pay via UPI</a>
-
-      <button type="submit" class="confirm-btn">
-        I Have Completed Payment
-      </button>
-    </form>
-
-  </div>
-</div>
-
-<!-- ABOUT SECTION -->
-<section id="about" class="about-section">
-  <h2>About Noore-e-Chandi</h2>
-  <p>
-    Noore-e-Chandi brings you handcrafted premium silver jewellery designed to
-    reflect elegance, purity, and timeless beauty. Each piece is carefully
-    selected to match modern style with traditional charm.
-  </p>
-</section>
-
-<!-- CONTACT SECTION -->
-<section id="contact" class="contact-section">
-  <h2>Contact Us</h2>
-
-  <p>Email: support@noore-e-chandi.com</p>
-  <p>Instagram: @noore_e_chandi</p>
 
 </section>
 
-<!-- FOOTER -->
+
+<section id="men" class="section">
+
+<h2>Men's Collection</h2>
+
+<div class="coming-soon">
+Launching Soon
+</div>
+
+</section>
+
+
+<section id="contact" class="section">
+
+<h2>Contact</h2>
+<p>WhatsApp orders available</p>
+
+<a href="https://wa.me/919821201453" class="whatsapp-btn">
+Order on WhatsApp
+</a>
+
+</section>
+
+
 <footer>
-  <p>© 2026 Noore-e-Chandi. All rights reserved.</p>
+
+© 2026 Noore-e-Chandi
+
 </footer>
 
+
 <script src="script.js"></script>
+
 </body>
 </html>
