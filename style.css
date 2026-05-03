@@ -1,252 +1,125 @@
-/* ==============================
-   NOORE-E-CHANDI LUXURY STYLESHEET
-   Inspired by premium jewellery UI aesthetics
-   ============================== */
-
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+body{
+margin:0;
+font-family:Poppins;
+background:#0b0b0b;
+color:white;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #0b0b0b;
-  color: #f5f5f5;
-  scroll-behavior: smooth;
+.header{
+display:flex;
+justify-content:space-between;
+padding:20px 6%;
+background:black;
+position:sticky;
+top:0;
 }
 
-h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
-  letter-spacing: 1px;
+.logo{
+color:#e6c97b;
+font-size:22px;
 }
 
-/* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 8%;
-  background: rgba(0,0,0,0.9);
-  position: sticky;
-  top: 0;
-  z-index: 999;
+nav a{
+margin-left:20px;
+color:#ddd;
+text-decoration:none;
 }
 
-.logo {
-  font-size: 26px;
-  color: #e6c97b;
-  font-weight: bold;
+.hero{
+padding:120px 6%;
+text-align:center;
+background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),
+url("https://images.unsplash.com/photo-1617038220319-276d3cfab638") center/cover;
 }
 
-nav a {
-  margin-left: 25px;
-  text-decoration: none;
-  color: #ddd;
-  font-size: 15px;
-  transition: 0.3s;
+.hero h1{
+font-size:48px;
 }
 
-nav a:hover {
-  color: #e6c97b;
+.btn{
+background:#e6c97b;
+padding:12px 28px;
+border-radius:30px;
+color:black;
 }
 
-/* HERO SECTION */
-.hero {
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.9)),
-              url("https://images.unsplash.com/photo-1617038220319-276d3cfab638") center/cover;
+.section{
+padding:70px 6%;
+text-align:center;
 }
 
-.hero-text h1 {
-  font-size: 52px;
-  margin-bottom: 20px;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
 }
 
-.hero-text p {
-  font-size: 18px;
-  margin-bottom: 30px;
-  color: #ccc;
+.card{
+background:#111;
+border-radius:15px;
+overflow:hidden;
 }
 
-.btn {
-  background: linear-gradient(135deg,#e6c97b,#caa84c);
-  color: black;
-  padding: 14px 32px;
-  border-radius: 40px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: .4s;
+.card img{
+width:100%;
+height:260px;
+object-fit:cover;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(230,201,123,.4);
+.product-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+padding:80px 6%;
 }
 
-/* PRODUCTS SECTION */
-.products-section {
-  padding: 80px 8%;
-  text-align: center;
+.gallery img{
+width:100%;
+border-radius:12px;
 }
 
-.products-section h2 {
-  font-size: 36px;
-  margin-bottom: 50px;
-  color: #e6c97b;
+.thumbs{
+display:flex;
+gap:10px;
+margin-top:15px;
 }
 
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-  gap: 35px;
+.thumbs img{
+width:70px;
+cursor:pointer;
 }
 
-.product-card {
-  background: #111;
-  border-radius: 20px;
-  overflow: hidden;
-  transition: .4s ease;
-  border: 1px solid rgba(255,255,255,.05);
+.buy-btn{
+padding:14px 34px;
+background:#e6c97b;
+border:none;
+border-radius:30px;
+margin-top:20px;
 }
 
-.product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(230,201,123,.15);
+.whatsapp-btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 30px;
+background:#25D366;
+color:white;
+border-radius:30px;
 }
 
-.product-card img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
+footer{
+text-align:center;
+padding:20px;
+background:black;
 }
 
-.product-card h3 {
-  margin: 15px 0 5px;
-  font-size: 20px;
+@media(max-width:900px){
+
+.product-container{
+grid-template-columns:1fr;
 }
 
-.product-card p {
-  color: #e6c97b;
-  font-size: 16px;
-  margin-bottom: 15px;
-}
-
-.product-card button {
-  margin-bottom: 20px;
-  padding: 10px 25px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(135deg,#e6c97b,#caa84c);
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.product-card button:hover {
-  opacity: .9;
-}
-
-/* MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.85);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: #141414;
-  padding: 40px;
-  border-radius: 18px;
-  width: 420px;
-  max-width: 95%;
-}
-
-.modal-content h2 {
-  margin-bottom: 20px;
-}
-
-.modal-content input,
-.modal-content textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border: none;
-  background: #222;
-  color: white;
-}
-
-.confirm-btn {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(135deg,#e6c97b,#caa84c);
-  cursor: pointer;
-}
-
-.close {
-  float: right;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-/* ABOUT SECTION */
-.about-section {
-  padding: 80px 12%;
-  text-align: center;
-}
-
-.about-section h2 {
-  margin-bottom: 20px;
-  color: #e6c97b;
-}
-
-.about-section p {
-  max-width: 650px;
-  margin: auto;
-  line-height: 1.7;
-  color: #ccc;
-}
-
-/* CONTACT */
-.contact-section {
-  padding: 60px 8%;
-  text-align: center;
-}
-
-.contact-section h2 {
-  color: #e6c97b;
-  margin-bottom: 15px;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #000;
-  font-size: 14px;
-  color: #777;
-}
-
-/* MOBILE OPTIMIZATION */
-@media(max-width:768px){
-
-.hero-text h1{
-font-size:34px;
-}
-
-nav{
- display:none;
+.hero h1{
+font-size:32px;
 }
 
 }
-
