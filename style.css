@@ -1,0 +1,22 @@
+body {
+  font-family: sans-serif;
+  background: black;
+  color: gold;
+  text-align: center;
+}
+
+.product {
+  border: 1px solid gold;
+  padding: 10px;
+  margin: 10px;
+}
+
+button {
+  background: gold;
+  border: none;
+  padding: 10px;
+}
+
+.hidden {
+  display: none;
+}
