@@ -1,254 +1,1504 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noore-e-Chandi | Silver Jewellery</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Noor-e-Chandi | A Gift That Shines Forever</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #9A7A30;
+    --gold-glow: rgba(201,168,76,0.18);
+    --black: #0A0A0A;
+    --black2: #111111;
+    --black3: #181818;
+    --black4: #222222;
+    --silver: #C0C0C0;
+    --silver-light: #E8E8E8;
+    --text-muted: #888;
+    --white: #fff;
+  }
 
-<link rel="stylesheet" href="style.css">
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--black2); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 10px; }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4vw;
+    height: 70px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    transition: box-shadow .3s;
+  }
+  header.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.7); }
+
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .brand-logo {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--gold);
+    background: var(--black3);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .brand-logo svg { width: 32px; height: 32px; }
+  .brand-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+  }
+  .brand-text span {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 300;
+    color: var(--silver);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  nav { display: flex; align-items: center; gap: 2.5rem; }
+  nav a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--silver-light);
+    text-decoration: none;
+    position: relative;
+    transition: color .25s;
+  }
+  nav a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--gold);
+    transform: scaleX(0); transition: transform .25s;
+    transform-origin: left;
+  }
+  nav a:hover { color: var(--gold); }
+  nav a:hover::after { transform: scaleX(1); }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    background: var(--black);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 60% 40%, rgba(201,168,76,0.09) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 20% 70%, rgba(192,192,192,0.06) 0%, transparent 60%),
+      linear-gradient(160deg, #0d0d0d 0%, #0a0a0a 60%, #111007 100%);
+  }
+  .hero-ornament {
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: min(700px, 90vw); height: min(700px, 90vw);
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.07);
+    pointer-events: none;
+  }
+  .hero-ornament::before {
+    content: '';
+    position: absolute; inset: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.05);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 0 20px;
+    animation: fadeUp .9s ease both;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 6px 20px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 7vw, 5.2rem);
+    font-weight: 600;
+    line-height: 1.12;
+    color: var(--white);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+    color: var(--silver);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    margin-bottom: 42px;
+    max-width: 480px;
+    margin-left: auto; margin-right: auto;
+  }
+  .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── BUTTONS ── */
+  .btn-gold {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    color: var(--black);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s, filter .2s;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.35);
+  }
+  .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.5); filter: brightness(1.08); }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 13px 30px;
+    border: 1.5px solid rgba(201,168,76,0.5);
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .2s;
+  }
+  .btn-outline:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; margin: 0 auto 48px; max-width: 300px;
+  }
+  .section-divider::before, .section-divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .section-divider span { color: var(--gold); font-size: 1rem; }
+
+  /* ── SECTIONS ── */
+  section { padding: 90px 4vw; }
+
+  .section-header { text-align: center; margin-bottom: 16px; }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-subtitle {
+    margin-top: 12px;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-weight: 300;
+  }
+
+  /* ── PRODUCT GRID ── */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  @media(max-width:1100px){ .product-grid { grid-template-columns: repeat(3,1fr); } }
+  @media(max-width:768px){ .product-grid { grid-template-columns: repeat(2,1fr); gap:14px; } }
+  @media(max-width:420px){ .product-grid { grid-template-columns: 1fr; } }
+
+  .product-card {
+    background: var(--black3);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+    position: relative;
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.25);
+    border-color: rgba(201,168,76,0.3);
+  }
+  .product-img-wrap {
+    position: relative; overflow: hidden;
+    aspect-ratio: 1/1;
+    background: var(--black4);
+  }
+  .product-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+  }
+  .product-card:hover .product-img-wrap img { transform: scale(1.07); }
+
+  .product-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 100px;
+  }
+
+  .product-quick {
+    position: absolute; bottom: -48px; left: 0; right: 0;
+    background: rgba(10,10,10,0.92);
+    padding: 12px;
+    text-align: center;
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold);
+    transition: bottom .3s;
+    backdrop-filter: blur(6px);
+  }
+  .product-card:hover .product-quick { bottom: 0; }
+
+  .product-info { padding: 16px 16px 20px; }
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .product-price {
+    font-size: 1rem; font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .product-price-orig {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-left: 6px;
+    font-weight: 300;
+  }
+
+  /* ── FEATURES STRIP ── */
+  .features-strip {
+    display: flex; flex-wrap: wrap;
+    gap: 20px; justify-content: center;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    padding: 36px 4vw;
+    background: var(--black2);
+  }
+  .feat-item {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--silver);
+    font-size: 0.8rem;
+    padding: 0 20px;
+  }
+  .feat-icon { font-size: 1.4rem; }
+
+  /* ── PRODUCT DETAIL ── */
+  #product-detail {
+    display: none;
+    min-height: 100vh;
+    padding-top: 90px;
+    background: var(--black);
+  }
+  #product-detail.active { display: block; }
+
+  .detail-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 60px 4vw 80px;
+  }
+  .detail-back {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.8rem; letter-spacing: 0.08em;
+    cursor: pointer; margin-bottom: 40px;
+    transition: color .2s;
+    background: none; border: none;
+  }
+  .detail-back:hover { color: var(--gold); }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  @media(max-width:768px){ .detail-grid { grid-template-columns: 1fr; gap: 30px; } }
+
+  .detail-gallery { position: sticky; top: 90px; }
+  .detail-main-img {
+    width: 100%; aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid rgba(201,168,76,0.12);
+    background: var(--black3);
+    margin-bottom: 14px;
+    transition: opacity .3s;
+  }
+  .detail-thumbs { display: flex; gap: 10px; flex-wrap: wrap; }
+  .detail-thumb {
+    width: 72px; height: 72px;
+    object-fit: cover; border-radius: 10px;
+    border: 2px solid transparent;
+    cursor: pointer; transition: border-color .2s;
+    background: var(--black3);
+  }
+  .detail-thumb.active, .detail-thumb:hover { border-color: var(--gold); }
+
+  .detail-info {}
+  .detail-tag {
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px; display: block;
+  }
+  .detail-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    color: var(--white); margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .detail-price {
+    font-size: 1.6rem; font-weight: 600; color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .detail-mrp { color: var(--text-muted); font-size: 0.82rem; margin-bottom: 24px; }
+  .detail-desc {
+    font-size: 0.88rem; line-height: 1.85; color: #aaa;
+    margin-bottom: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+  }
+  .detail-features { margin-bottom: 28px; }
+  .detail-features h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem; color: var(--gold);
+    margin-bottom: 12px; letter-spacing: 0.08em;
+  }
+  .detail-features ul { list-style: none; }
+  .detail-features ul li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 0.83rem; color: #bbb;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .detail-features ul li::before {
+    content: '◆';
+    color: var(--gold); font-size: 0.5rem; margin-top: 4px; flex-shrink: 0;
+  }
+
+  .trust-badges {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 32px;
+  }
+  .trust-badge {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.72rem; color: var(--silver);
+    font-weight: 500; letter-spacing: 0.04em;
+  }
+  .trust-badge span:first-child { color: var(--gold); font-size: 1rem; }
+
+  .detail-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* ── ORDER MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 2000;
+    align-items: center; justify-content: center;
+    backdrop-filter: blur(8px);
+    padding: 20px;
+  }
+  .modal-overlay.active { display: flex; animation: fadeIn .25s ease; }
+
+  .modal-box {
+    background: var(--black3);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 20px;
+    padding: 36px;
+    max-width: 520px; width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp .3s ease;
+  }
+  .modal-close {
+    position: absolute; top: 16px; right: 18px;
+    background: none; border: none;
+    color: var(--text-muted); font-size: 1.4rem;
+    cursor: pointer; transition: color .2s;
+    line-height: 1;
+  }
+  .modal-close:hover { color: var(--gold); }
+
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: var(--white);
+    margin-bottom: 6px;
+  }
+  .modal-subtitle {
+    font-size: 0.8rem; color: var(--text-muted);
+    margin-bottom: 28px;
+  }
+  .modal-product-summary {
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 10px; padding: 14px 16px;
+    margin-bottom: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .modal-product-summary .name { font-size: 0.85rem; color: var(--silver); }
+  .modal-product-summary .price { font-size: 1rem; font-weight: 600; color: var(--gold); }
+
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block; font-size: 0.73rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 7px;
+    font-weight: 500;
+  }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    background: var(--black4);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: var(--white);
+    font-size: 0.88rem;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color .2s;
+    outline: none;
+  }
+  .form-group input:focus, .form-group textarea:focus {
+    border-color: rgba(201,168,76,0.5);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.07);
+  }
+  .form-group input[type="file"] { padding: 10px; cursor: pointer; }
+  .file-hint { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+
+  .upi-section {
+    background: rgba(201,168,76,0.05);
+    border: 1.5px dashed rgba(201,168,76,0.3);
+    border-radius: 12px; padding: 20px;
+    text-align: center; margin-bottom: 20px;
+  }
+  .upi-section p { font-size: 0.8rem; color: var(--silver); margin-bottom: 14px; }
+  .upi-id {
+    font-size: 1rem; color: var(--gold); font-weight: 600;
+    background: var(--black4); border-radius: 8px;
+    padding: 8px 16px; display: inline-block; margin-bottom: 14px;
+    letter-spacing: 0.05em;
+  }
+
+  .modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .modal-actions .btn-gold, .modal-actions .btn-outline { flex: 1; justify-content: center; min-width: 140px; }
+
+  .success-msg {
+    display: none; text-align: center; padding: 40px 20px;
+  }
+  .success-msg.active { display: block; }
+  .success-icon { font-size: 3rem; margin-bottom: 16px; }
+  .success-msg h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; color: var(--white); margin-bottom: 10px;
+  }
+  .success-msg p { font-size: 0.85rem; color: var(--text-muted); }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--black2);
+    text-align: center;
+  }
+  .contact-card {
+    background: var(--black3);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 20px;
+    padding: 50px 40px;
+    max-width: 600px; margin: 40px auto 0;
+  }
+  .contact-card p {
+    color: var(--text-muted); font-size: 0.88rem;
+    line-height: 1.75; margin-bottom: 28px;
+  }
+  .whatsapp-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #25D366;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 14px 32px; border-radius: 100px;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+  }
+  .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,211,102,0.45); }
+  .contact-info {
+    margin-top: 28px;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 24px;
+  }
+  .contact-info-item {
+    font-size: 0.8rem; color: var(--text-muted);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .contact-info-item span:first-child { color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 40px 4vw 30px;
+    display: flex; flex-wrap: wrap; gap: 20px;
+    align-items: center; justify-content: space-between;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: var(--gold); font-weight: 600;
+  }
+  .footer-tagline { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+  .footer-copy { font-size: 0.72rem; color: var(--text-muted); text-align: right; }
+  @media(max-width:600px){ .footer-copy { text-align: center; width: 100%; } }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── PAGES ── */
+  #main-content { display: block; }
+  #main-content.hidden { display: none; }
+
+  /* Desktop UPI message */
+  .upi-desktop-msg {
+    display: none;
+    font-size: 0.8rem; color: var(--text-muted);
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px; padding: 10px;
+    margin-top: 10px;
+  }
+
+  /* ── GOLD LINE ── */
+  .gold-line {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    margin: 0 auto 32px;
+    border-radius: 2px;
+  }
+
+  /* ── SCROLL INDICATOR ── */
+  .scroll-hint {
+    position: absolute; bottom: 36px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 6px; color: rgba(201,168,76,0.5);
+    font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  .scroll-hint svg { width: 18px; }
+  @keyframes bounce {
+    0%,100%{ transform: translateX(-50%) translateY(0); }
+    50%{ transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: var(--black3); border: 1px solid rgba(201,168,76,0.3);
+    color: var(--silver); font-size: 0.82rem;
+    padding: 12px 24px; border-radius: 100px;
+    z-index: 3000; opacity: 0;
+    transition: opacity .3s; pointer-events: none;
+    white-space: nowrap;
+  }
+  .toast.show { opacity: 1; }
+
+  /* Loading skeleton */
+  .img-placeholder {
+    background: linear-gradient(90deg, var(--black3) 25%, var(--black4) 50%, var(--black3) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  @keyframes shimmer { 0%{ background-position: -200% 0; } 100%{ background-position: 200% 0; } }
+
+  /* ── LOGO SVG ── */
+  .logo-svg-wrap {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    background: var(--black3);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; flex-shrink: 0;
+  }
+</style>
 </head>
-
 <body>
 
-<header class="header">
-<div class="logo">Noore-e-Chandi</div>
-
-<nav id="nav">
-<a href="index.html">Home</a>
-<a href="#women">Women</a>
-<a href="#men">Men</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<!-- HEADER -->
+<header id="site-header">
+  <a class="brand" href="#home" onclick="showMain()">
+    <div class="logo-svg-wrap">
+      <!-- Inline SVG logo matching the flame/calligraphy style of the uploaded logo -->
+      <svg viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Flame/ribbon shapes in silver -->
+        <defs>
+          <linearGradient id="lg1" x1="20" y1="5" x2="40" y2="55" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#e8e8e8"/>
+            <stop offset="40%" stop-color="#C0C0C0"/>
+            <stop offset="100%" stop-color="#888"/>
+          </linearGradient>
+          <linearGradient id="lg2" x1="30" y1="0" x2="30" y2="60" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#d4d4d4"/>
+            <stop offset="100%" stop-color="#888"/>
+          </linearGradient>
+        </defs>
+        <!-- Calligraphy swish base -->
+        <path d="M12 52 Q18 48 30 50 Q44 52 48 46" stroke="url(#lg1)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- Flame ribbons -->
+        <path d="M28 48 Q24 38 26 28 Q28 18 24 10 Q30 16 32 26 Q34 34 30 42 Z" fill="url(#lg1)"/>
+        <path d="M32 46 Q36 36 34 24 Q32 14 36 6 Q40 14 38 26 Q36 36 34 44 Z" fill="url(#lg2)" opacity="0.85"/>
+        <path d="M26 42 Q20 36 22 26 Q24 16 20 8 Q16 18 18 28 Q20 38 24 44 Z" fill="url(#lg1)" opacity="0.7"/>
+        <!-- Inner dark lines for the ribbon effect -->
+        <path d="M27 42 Q25 34 26 26 Q27 18 25 12" stroke="#0d0d0d" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.6"/>
+        <path d="M31 44 Q33 36 32 26 Q31 16 33 10" stroke="#0d0d0d" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+        <!-- Curved tail/hook -->
+        <path d="M28 48 Q22 55 18 54 Q14 52 16 48 Q18 44 24 46" stroke="url(#lg1)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      Noor-e-Chandi
+      <span>A Gift That Shines Forever</span>
+    </div>
+  </a>
+  <nav>
+    <a href="#home" onclick="showMain()">Home</a>
+    <a href="#women" onclick="showMain()">Women</a>
+    <a href="#men" onclick="showMain()">Men</a>
+    <a href="#contact" onclick="showMain()">Contact</a>
+  </nav>
 </header>
 
+<!-- MAIN CONTENT -->
+<div id="main-content">
 
-<section class="hero">
-<h1>Elegance in Every Shine</h1>
-<p>Premium handcrafted silver jewellery</p>
-<a href="#women" class="btn">Explore Collection</a>
-</section>
+  <!-- HERO -->
+  <section id="home" style="padding:0;">
+    <div class="hero-bg"></div>
+    <div class="hero-ornament"></div>
+    <div class="hero-content">
+      <div class="hero-tag">✦ Pure 925 Sterling Silver</div>
+      <h1 class="hero-title">Elegance in<br><em>Every Shine</em></h1>
+      <p class="hero-sub">Premium handcrafted silver jewellery — timeless pieces that whisper your story.</p>
+      <div class="hero-actions">
+        <a href="#women" class="btn-gold" onclick="showMain()">Explore Collection</a>
+        <a href="#contact" class="btn-outline" onclick="showMain()">WhatsApp Us</a>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      Scroll
+    </div>
+  </section>
 
+  <!-- FEATURES STRIP -->
+  <div class="features-strip">
+    <div class="feat-item"><span class="feat-icon">💎</span><span>925 Sterling Silver</span></div>
+    <div class="feat-item"><span class="feat-icon">🚚</span><span>Free Delivery Above ₹999</span></div>
+    <div class="feat-item"><span class="feat-icon">✅</span><span>BIS Hallmark Certified</span></div>
+    <div class="feat-item"><span class="feat-icon">🔄</span><span>Easy 7-Day Returns</span></div>
+    <div class="feat-item"><span class="feat-icon">🔒</span><span>100% Secure Payments</span></div>
+  </div>
 
-<section id="women" class="section">
+  <!-- WOMEN'S COLLECTION -->
+  <section id="women">
+    <div class="section-header">
+      <div class="section-tag">✦ Women's Collection</div>
+      <h2 class="section-title">Crafted for <em>Her</em></h2>
+      <p class="section-subtitle">Each piece tells a story of grace, tradition, and timeless beauty.</p>
+    </div>
+    <div class="gold-line"></div>
+    <div class="product-grid" id="product-grid">
+      <!-- Filled by JS -->
+    </div>
+  </section>
 
-<h2>Women's Collection</h2>
+  <!-- MEN'S COLLECTION -->
+  <section id="men" style="background: var(--black2);">
+    <div class="section-header">
+      <div class="section-tag">✦ Men's Collection</div>
+      <h2 class="section-title">Bold &amp; <em>Distinguished</em></h2>
+      <p class="section-subtitle">Sterling silver pieces that define modern masculinity.</p>
+    </div>
+    <div class="gold-line"></div>
+    <div class="product-grid" id="men-grid">
+      <!-- Filled by JS -->
+    </div>
+  </section>
 
-<div class="grid">
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-header">
+      <div class="section-tag">✦ Get in Touch</div>
+      <h2 class="section-title">We'd Love to <em>Hear from You</em></h2>
+    </div>
+    <div class="gold-line"></div>
+    <div class="contact-card">
+      <p>Have a question about a piece, or want to place a custom order? We're available on WhatsApp — reach out and we'll respond promptly.</p>
+      <a class="whatsapp-btn" href="https://wa.me/919821201453" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        WhatsApp Orders Available
+      </a>
+      <div class="contact-info">
+        <div class="contact-info-item"><span>📞</span><span>+91 98212 01453</span></div>
+        <div class="contact-info-item"><span>📍</span><span>Etawah, Uttar Pradesh</span></div>
+        <div class="contact-info-item"><span>🕐</span><span>Mon–Sat, 10am – 7pm</span></div>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<a href="product.html?name=Floral Silver Ring&price=499&img=ring1">
-<img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638">
-<h3>Floral Silver Ring</h3>
-<p>₹499</p>
-</a>
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">Noor-e-Chandi</div>
+      <div class="footer-tagline">A Gift That Shines Forever</div>
+    </div>
+    <div class="footer-copy">
+      © 2026 Noor-e-Chandi. All rights reserved.<br>
+      <span style="color:#555; font-size:0.65rem;">Pure 925 Sterling Silver Jewellery</span>
+    </div>
+  </footer>
+
+</div><!-- /main-content -->
+
+<!-- PRODUCT DETAIL -->
+<div id="product-detail">
+  <div class="detail-inner">
+    <button class="detail-back" onclick="showMain()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Collection
+    </button>
+    <div class="detail-grid">
+      <div class="detail-gallery">
+        <img id="detail-main-img" class="detail-main-img" src="" alt="Product" />
+        <div class="detail-thumbs" id="detail-thumbs"></div>
+      </div>
+      <div class="detail-info">
+        <span class="detail-tag" id="detail-tag">Women's Collection</span>
+        <h1 class="detail-name" id="detail-name"></h1>
+        <div class="detail-price" id="detail-price"></div>
+        <div class="detail-mrp" id="detail-mrp"></div>
+        <p class="detail-desc" id="detail-desc"></p>
+        <div class="detail-features">
+          <h4>Product Highlights</h4>
+          <ul id="detail-features"></ul>
+        </div>
+        <div class="trust-badges">
+          <div class="trust-badge"><span>💎</span><span>925 Sterling Silver</span></div>
+          <div class="trust-badge"><span>✅</span><span>BIS Hallmarked</span></div>
+          <div class="trust-badge"><span>🚚</span><span>Free Shipping</span></div>
+          <div class="trust-badge"><span>🔄</span><span>7-Day Returns</span></div>
+        </div>
+        <div class="detail-actions">
+          <button class="btn-gold" id="buy-now-btn" onclick="openOrderModal()">Buy Now</button>
+          <a id="whatsapp-enquiry" class="btn-outline" target="_blank">WhatsApp Enquiry</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="card">
-<a href="product.html?name=Moon Pendant&price=799&img=pendant1">
-<img src="https://images.unsplash.com/photo-1608042314453-ae338d80c427">
-<h3>Moon Pendant</h3>
-<p>₹799</p>
-</a>
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="order-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeOrderModal()">✕</button>
+
+    <div id="order-form-wrap">
+      <h2 class="modal-title">Place Your Order</h2>
+      <p class="modal-subtitle">Fill in your details and complete payment to confirm.</p>
+
+      <div class="modal-product-summary">
+        <span class="name" id="modal-product-name"></span>
+        <span class="price" id="modal-product-price"></span>
+      </div>
+
+      <!-- UPI SECTION -->
+      <div class="upi-section">
+        <p>Pay securely via UPI to confirm your order</p>
+        <div class="upi-id">9821201453@ptyes</div><br>
+        <button class="btn-gold" onclick="handleUPIPayment()" style="font-size:0.75rem; padding:11px 24px;">
+          📱 Pay via UPI
+        </button>
+        <div class="upi-desktop-msg" id="upi-desktop-msg">
+          📲 On desktop? Open your UPI app and pay to <strong style="color:var(--gold)">9821201453@ptyes</strong> with the above amount.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" id="field-name" placeholder="Your full name" />
+      </div>
+      <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" id="field-phone" placeholder="+91 XXXXX XXXXX" />
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="field-email" placeholder="you@example.com" />
+      </div>
+      <div class="form-group">
+        <label>Delivery Address *</label>
+        <input type="text" id="field-address" placeholder="Full address with pincode" />
+      </div>
+      <div class="form-group">
+        <label>Upload Payment Screenshot *</label>
+        <input type="file" id="field-screenshot" accept="image/*" />
+        <div class="file-hint">Upload your UPI payment confirmation screenshot</div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-outline" onclick="closeOrderModal()">Cancel</button>
+        <button class="btn-gold" onclick="confirmOrder()">Confirm Order ✓</button>
+      </div>
+    </div>
+
+    <div class="success-msg" id="success-msg">
+      <div class="success-icon">🎉</div>
+      <h3>Order Received!</h3>
+      <p>Thank you for your purchase. We will contact you shortly on your provided number to confirm delivery details.</p>
+      <br>
+      <p style="color:var(--gold); font-size:0.8rem; margin-top:8px;">Noor-e-Chandi — A Gift That Shines Forever ✦</p>
+      <br>
+      <button class="btn-gold" onclick="closeOrderModal()" style="margin-top:16px;">Continue Shopping</button>
+    </div>
+  </div>
 </div>
 
-  <div class="card">
-<a href="product.html?name=Floral Silver Ring&price=499">
-<img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638">
-<h3>Floral Silver Ring</h3>
-<p>₹499</p>
-</a>
-</div>
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
-<div class="card">
-<a href="product.html?name=Moon Pendant&price=799">
-<img src="https://images.unsplash.com/photo-1608042314453-ae338d80c427">
-<h3>Moon Pendant</h3>
-<p>₹799</p>
-</a>
-</div>
+<script>
+// ── PRODUCT DATA ──
+const womenProducts = [
+  {
+    id: 1,
+    name: "Moonflower Silver Ring",
+    price: 799,
+    mrp: 1199,
+    badge: "Bestseller",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80"
+    ],
+    desc: "A delicate moonflower-inspired ring crafted from pure 925 sterling silver. Lightweight and elegant, it rests beautifully on your finger and catches the light with every movement.",
+    features: ["Pure 925 Sterling Silver", "Adjustable band (fits sizes 6–9)", "Anti-tarnish coated", "Handcrafted by artisans", "Weight: ~3g"]
+  },
+  {
+    id: 2,
+    name: "Zara Oxidised Jhumka",
+    price: 649,
+    mrp: 999,
+    badge: "New",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80"
+    ],
+    desc: "Traditional jhumka earrings with a contemporary oxidised finish. Inspired by Rajasthani craftsmanship, these pair perfectly with ethnic and fusion outfits.",
+    features: ["Oxidised 925 Silver", "Hook-style back", "Length: 4.5cm", "Lightweight design", "Hypoallergenic"]
+  },
+  {
+    id: 3,
+    name: "Celestia Chain Necklace",
+    price: 1299,
+    mrp: 1899,
+    badge: "Popular",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80"
+    ],
+    desc: "A timeless layered chain necklace in lustrous 925 silver. Versatile enough to wear alone or layered with other pieces for a curated look.",
+    features: ["925 Sterling Silver", "Length: 18 inches with 2\" extender", "Lobster clasp closure", "Rhodium plated for extra shine", "Unisex design"]
+  },
+  {
+    id: 4,
+    name: "Lotus Bangle Set",
+    price: 1499,
+    mrp: 2199,
+    badge: "Sale",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80"
+    ],
+    desc: "A set of three stackable lotus-embossed bangles, perfect for gifting or everyday wear. The intricate lotus motif carries deep spiritual significance.",
+    features: ["Set of 3 bangles", "Size: 2.4 standard (customisable)", "925 Silver with lotus motif", "Total weight: ~18g", "Comes in gift packaging"]
+  },
+  {
+    id: 5,
+    name: "Starfall Stud Earrings",
+    price: 499,
+    mrp: 749,
+    badge: "",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80"
+    ],
+    desc: "Minimalist star-shaped stud earrings that add a celestial touch to any outfit. Their petite size makes them perfect for daily wear.",
+    features: ["925 Sterling Silver", "Star-shaped design", "Push-back closure", "Size: 8mm", "Allergen-free"]
+  },
+  {
+    id: 6,
+    name: "Peacock Toe Ring",
+    price: 349,
+    mrp: 549,
+    badge: "Trending",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80"
+    ],
+    desc: "A graceful peacock-motif toe ring, a staple of traditional Indian jewellery. Open-ended for an adjustable, comfortable fit.",
+    features: ["Pure 925 Silver", "Peacock feather motif", "Open adjustable band", "Sold as a pair", "Suitable for most toe sizes"]
+  },
+  {
+    id: 7,
+    name: "Rani Haar Choker",
+    price: 2299,
+    mrp: 3499,
+    badge: "Premium",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80"
+    ],
+    desc: "A regal choker-style necklace inspired by Mughal jewellery traditions. Intricate filigree work in pure silver makes this a statement piece for celebrations.",
+    features: ["Pure 925 Silver filigree", "Length: 13–15 inches", "Adjustable hook clasp", "Weight: ~22g", "Ideal for weddings & festivals"]
+  },
+  {
+    id: 8,
+    name: "Pearl Drop Earrings",
+    price: 899,
+    mrp: 1299,
+    badge: "",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80"
+    ],
+    desc: "Elegant drop earrings featuring a freshwater cultured pearl suspended from a sterling silver hook. Timeless enough for both office and evening wear.",
+    features: ["925 Silver + freshwater pearl", "Drop length: 3.2cm", "Hook-style backing", "Pearl size: 6–7mm", "Certificate of authenticity included"]
+  },
+  {
+    id: 9,
+    name: "Chakra Pendant Necklace",
+    price: 999,
+    mrp: 1449,
+    badge: "Spiritual",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80"
+    ],
+    desc: "A meaningful chakra mandala pendant on a fine silver chain. Symbolises balance and harmony — a beautiful gift for yourself or a loved one.",
+    features: ["925 Silver pendant", "Chain: 18 inches", "Pendant size: 2cm", "Engraved chakra symbol", "Velvet gift box included"]
+  },
+  {
+    id: 10,
+    name: "Payal (Anklet) Silver",
+    price: 749,
+    mrp: 1099,
+    badge: "Bestseller",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80"
+    ],
+    desc: "A classic silver payal with delicate ghungroo bells that create a soft, musical sound. Worn for centuries across India, this is a heritage piece reimagined.",
+    features: ["925 Sterling Silver", "Adjustable length: 9–11 inches", "Traditional ghungroo design", "Sold as a pair", "Anti-tarnish treated"]
+  },
+  {
+    id: 11,
+    name: "Floral Maang Tikka",
+    price: 1099,
+    mrp: 1599,
+    badge: "Bridal",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80"
+    ],
+    desc: "A stunning floral maang tikka designed for weddings and festive occasions. The intricate petal work in 925 silver catches light beautifully.",
+    features: ["925 Sterling Silver", "Adjustable chain length", "Floral motif centrepiece", "Weight: ~8g", "Includes storage pouch"]
+  },
+  {
+    id: 12,
+    name: "Twisted Hoop Earrings",
+    price: 579,
+    mrp: 849,
+    badge: "",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80"
+    ],
+    desc: "Geometric twisted hoop earrings with a high-polish finish. Modern, lightweight, and versatile — the perfect everyday earring.",
+    features: ["925 Sterling Silver", "Diameter: 25mm", "Hinged closure", "High polish finish", "Lightweight: ~3g per pair"]
+  },
+  {
+    id: 13,
+    name: "Kundan Silver Necklace",
+    price: 1849,
+    mrp: 2699,
+    badge: "Sale",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80"
+    ],
+    desc: "A gorgeous kundan-style necklace set in 925 silver, featuring glass stones in vibrant hues. Designed for brides and festive occasions.",
+    features: ["925 Silver with kundan stones", "Length: 16 inches", "Includes matching earrings", "Weight: ~28g", "Royal Rajasthani craftsmanship"]
+  },
+  {
+    id: 14,
+    name: "Slim Band Ring Set",
+    price: 699,
+    mrp: 999,
+    badge: "New",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80"
+    ],
+    desc: "A set of three ultra-slim stacking rings that wear beautifully together or individually. Minimal, modern, and endlessly versatile.",
+    features: ["Set of 3 rings", "925 Sterling Silver", "Width: 1.5mm each", "Available sizes 5–10", "Mix-and-match styling"]
+  },
+  {
+    id: 15,
+    name: "Heritage Nath (Nose Ring)",
+    price: 449,
+    mrp: 699,
+    badge: "Cultural",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80"
+    ],
+    desc: "A finely crafted traditional nose ring, or nath, in 925 silver. Elegant filigree detailing honours centuries of Indian jewellery tradition.",
+    features: ["925 Sterling Silver", "Diameter: 14mm", "Easy latch closure", "Filigree floral motif", "Hypoallergenic"]
+  },
+  {
+    id: 16,
+    name: "Waterfall Tassel Earrings",
+    price: 849,
+    mrp: 1199,
+    badge: "Popular",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80"
+    ],
+    desc: "Long, flowing tassel earrings that move with you. Multiple silver strands cascade elegantly — bold, artistic, and undeniably striking.",
+    features: ["925 Sterling Silver", "Length: 7cm", "Multiple strand design", "Hook fastening", "Party & occasion wear"]
+  },
+  {
+    id: 17,
+    name: "Moonstone Adjustable Ring",
+    price: 1149,
+    mrp: 1649,
+    badge: "",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80"
+    ],
+    desc: "A mesmerising moonstone set in a sterling silver prong setting. The adularescent glow of the stone creates a magical, ethereal look.",
+    features: ["925 Silver + genuine moonstone", "Open band (adjustable)", "Stone size: 8x10mm", "Prong setting", "With gemstone certificate"]
+  },
+  {
+    id: 18,
+    name: "Infinity Charm Bracelet",
+    price: 799,
+    mrp: 1149,
+    badge: "Gift",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80"
+    ],
+    desc: "A dainty bracelet featuring a polished infinity charm in silver — the perfect symbol of endless love. Great for gifting on birthdays, anniversaries, and more.",
+    features: ["925 Sterling Silver", "Chain length: 7.5 inches", "Infinity charm: 12mm", "Toggle clasp", "Luxury gift box included"]
+  },
+  {
+    id: 19,
+    name: "Geometric Cuff Bracelet",
+    price: 1249,
+    mrp: 1799,
+    badge: "Modern",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80"
+    ],
+    desc: "A bold open-ended cuff bracelet with angular geometric cutwork. This contemporary design bridges Indian craftsmanship with modern minimalism.",
+    features: ["Pure 925 Silver", "Width: 18mm", "Unisex, open cuff", "Fits wrists 6–7.5 inches", "Weight: ~15g"]
+  },
+  {
+    id: 20,
+    name: "Sacred Heart Mangalsutra",
+    price: 2499,
+    mrp: 3699,
+    badge: "Bridal",
+    category: "Women",
+    images: [
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80"
+    ],
+    desc: "A contemporary mangalsutra in sterling silver with a heart-shaped diamond-cut pendant. Blends tradition with modern aesthetics for the modern Indian bride.",
+    features: ["925 Sterling Silver", "Black & silver beads", "Heart pendant: 15mm", "Adjustable: 16–18 inches", "Comes in bridal box"]
+  }
+];
 
-<div class="card">
-<a href="product.html?name=Crystal Drop Earrings&price=899">
-<img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d">
-<h3>Crystal Drop Earrings</h3>
-<p>₹899</p>
-</a>
-</div>
+const menProducts = [
+  {
+    id: 101,
+    name: "King's Signet Ring",
+    price: 1299,
+    mrp: 1899,
+    badge: "Bestseller",
+    category: "Men",
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80"
+    ],
+    desc: "A bold flat-top signet ring in brushed 925 silver. Powerful and masculine — ideal for the man who makes a statement with subtle elegance.",
+    features: ["Pure 925 Silver", "Flat-top signet design", "Brushed matte finish", "Available sizes 8–14", "Weight: ~12g"]
+  },
+  {
+    id: 102,
+    name: "Serpent Chain Bracelet",
+    price: 999,
+    mrp: 1449,
+    badge: "New",
+    category: "Men",
+    images: [
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80"
+    ],
+    desc: "A sleek serpentine-link chain bracelet with a polished finish. Minimalist enough for daily wear, striking enough for evenings.",
+    features: ["925 Sterling Silver", "Length: 8.5 inches", "Width: 4mm", "Lobster clasp", "Weight: ~14g"]
+  },
+  {
+    id: 103,
+    name: "Rudraksha Silver Bracelet",
+    price: 1149,
+    mrp: 1699,
+    badge: "Spiritual",
+    category: "Men",
+    images: [
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80"
+    ],
+    desc: "Natural rudraksha beads strung with 925 silver spacers and a central Om pendant. A powerful blend of spirituality and style.",
+    features: ["Natural 5-mukhi Rudraksha", "925 Silver Om pendant & spacers", "Adjustable macramé cord", "Blessed by artisans", "Suitable for daily wear"]
+  },
+  {
+    id: 104,
+    name: "Flat Curb Chain Necklace",
+    price: 1799,
+    mrp: 2599,
+    badge: "Popular",
+    category: "Men",
+    images: [
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9521e7c58b24?w=600&q=80"
+    ],
+    desc: "A classic flat curb chain necklace, bold and versatile. Wear alone for understated masculinity or layer with pendants for a curated look.",
+    features: ["925 Sterling Silver", "Width: 6mm", "Length: 22 inches", "Lobster clasp", "Weight: ~22g"]
+  },
+  {
+    id: 105,
+    name: "Arrow Pendant Necklace",
+    price: 849,
+    mrp: 1249,
+    badge: "",
+    category: "Men",
+    images: [
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80"
+    ],
+    desc: "A minimalist arrow pendant symbolising direction and focus. Pairs beautifully with a simple chain for a clean, purposeful look.",
+    features: ["925 Silver pendant", "Chain: 20 inches", "Pendant length: 3cm", "Spring ring clasp", "Unisex design"]
+  }
+];
 
-<div class="card">
-<a href="product.html?name=Infinity Love Ring&price=549">
-<img src="https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d">
-<h3>Infinity Love Ring</h3>
-<p>₹549</p>
-</a>
-</div>
+let currentProduct = null;
 
-<div class="card">
-<a href="product.html?name=Minimal Charm Bracelet&price=999">
-<img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
-<h3>Minimal Charm Bracelet</h3>
-<p>₹999</p>
-</a>
-</div>
+// ── RENDER PRODUCTS ──
+function renderProducts(products, gridId) {
+  const grid = document.getElementById(gridId);
+  grid.innerHTML = products.map(p => `
+    <div class="product-card" onclick="showProduct(${p.id})">
+      <div class="product-img-wrap">
+        <img src="${p.images[0]}" alt="${p.name}" loading="lazy" />
+        ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
+        <div class="product-quick">View Details →</div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div>
+          <span class="product-price">₹${p.price.toLocaleString()}</span>
+          <span class="product-price-orig">₹${p.mrp.toLocaleString()}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
 
-<div class="card">
-<a href="product.html?name=Starshine Stud Earrings&price=399">
-<img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e">
-<h3>Starshine Stud Earrings</h3>
-<p>₹399</p>
-</a>
-</div>
+renderProducts(womenProducts, 'product-grid');
+renderProducts(menProducts, 'men-grid');
 
-<div class="card">
-<a href="product.html?name=Royal Pearl Ring&price=1199">
-<img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a">
-<h3>Royal Pearl Ring</h3>
-<p>₹1199</p>
-</a>
-</div>
+// ── FIND PRODUCT ──
+function findProduct(id) {
+  return [...womenProducts, ...menProducts].find(p => p.id === id);
+}
 
-<div class="card">
-<a href="product.html?name=Silver Heart Pendant&price=699">
-<img src="https://images.unsplash.com/photo-1589128777073-263566ae5e4d">
-<h3>Silver Heart Pendant</h3>
-<p>₹699</p>
-</a>
-</div>
+// ── SHOW PRODUCT DETAIL ──
+function showProduct(id) {
+  const p = findProduct(id);
+  if (!p) return;
+  currentProduct = p;
 
-<div class="card">
-<a href="product.html?name=Elegant Hoop Earrings&price=749">
-<img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0">
-<h3>Elegant Hoop Earrings</h3>
-<p>₹749</p>
-</a>
-</div>
+  document.getElementById('main-content').classList.add('hidden');
+  const detail = document.getElementById('product-detail');
+  detail.classList.add('active');
 
-<div class="card">
-<a href="product.html?name=Vintage Silver Ring&price=599">
-<img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638">
-<h3>Vintage Silver Ring</h3>
-<p>₹599</p>
-</a>
-</div>
+  document.getElementById('detail-tag').textContent = p.category + "'s Collection ✦";
+  document.getElementById('detail-name').textContent = p.name;
+  document.getElementById('detail-price').textContent = '₹' + p.price.toLocaleString();
+  document.getElementById('detail-mrp').textContent = 'MRP ₹' + p.mrp.toLocaleString() + ' (Save ₹' + (p.mrp - p.price).toLocaleString() + ')';
+  document.getElementById('detail-desc').textContent = p.desc;
 
-<div class="card">
-<a href="product.html?name=Crystal Bloom Pendant&price=899">
-<img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d">
-<h3>Crystal Bloom Pendant</h3>
-<p>₹899</p>
-</a>
-</div>
+  const featuresList = document.getElementById('detail-features');
+  featuresList.innerHTML = p.features.map(f => `<li>${f}</li>`).join('');
 
-<div class="card">
-<a href="product.html?name=Celestial Ring&price=649">
-<img src="https://images.unsplash.com/photo-1608042314453-ae338d80c427">
-<h3>Celestial Ring</h3>
-<p>₹649</p>
-</a>
-</div>
+  const mainImg = document.getElementById('detail-main-img');
+  mainImg.src = p.images[0];
 
-<div class="card">
-<a href="product.html?name=Silver Petal Earrings&price=799">
-<img src="https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d">
-<h3>Silver Petal Earrings</h3>
-<p>₹799</p>
-</a>
-</div>
+  const thumbsWrap = document.getElementById('detail-thumbs');
+  thumbsWrap.innerHTML = p.images.map((img, i) => `
+    <img class="detail-thumb ${i === 0 ? 'active' : ''}" src="${img}" alt="View ${i+1}"
+      onclick="changeMainImage(this, '${img}')" />
+  `).join('');
 
-<div class="card">
-<a href="product.html?name=Grace Chain Pendant&price=899">
-<img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e">
-<h3>Grace Chain Pendant</h3>
-<p>₹899</p>
-</a>
-</div>
+  document.getElementById('whatsapp-enquiry').href =
+    `https://wa.me/919821201453?text=Hi! I'm interested in ${encodeURIComponent(p.name)} priced at ₹${p.price}. Please share more details.`;
 
-<div class="card">
-<a href="product.html?name=Classic Charm Bracelet&price=1099">
-<img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
-<h3>Classic Charm Bracelet</h3>
-<p>₹1099</p>
-</a>
-</div>
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-<div class="card">
-<a href="product.html?name=Minimal Silver Hoops&price=599">
-<img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0">
-<h3>Minimal Silver Hoops</h3>
-<p>₹599</p>
-</a>
-</div>
+function changeMainImage(thumb, src) {
+  document.getElementById('detail-main-img').src = src;
+  document.querySelectorAll('.detail-thumb').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+}
 
-<div class="card">
-<a href="product.html?name=Royal Crystal Ring&price=1299">
-<img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a">
-<h3>Royal Crystal Ring</h3>
-<p>₹1299</p>
-</a>
-</div>
+// ── SHOW MAIN ──
+function showMain() {
+  document.getElementById('product-detail').classList.remove('active');
+  document.getElementById('main-content').classList.remove('hidden');
+  currentProduct = null;
+}
 
-<div class="card">
-<a href="product.html?name=Heartline Pendant&price=699">
-<img src="https://images.unsplash.com/photo-1589128777073-263566ae5e4d">
-<h3>Heartline Pendant</h3>
-<p>₹699</p>
-</a>
-</div>
+// ── ORDER MODAL ──
+function openOrderModal() {
+  if (!currentProduct) return;
+  document.getElementById('modal-product-name').textContent = currentProduct.name;
+  document.getElementById('modal-product-price').textContent = '₹' + currentProduct.price.toLocaleString();
+  document.getElementById('order-form-wrap').style.display = 'block';
+  document.getElementById('success-msg').classList.remove('active');
+  document.getElementById('order-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-<div class="card">
-<a href="product.html?name=Moon Glow Earrings&price=749">
-<img src="https://images.unsplash.com/photo-1608042314453-ae338d80c427">
-<h3>Moon Glow Earrings</h3>
-<p>₹749</p>
-</a>
-</div>
+function closeOrderModal() {
+  document.getElementById('order-modal').classList.remove('active');
+  document.body.style.overflow = '';
+  // Reset form
+  ['field-name','field-phone','field-email','field-address'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  document.getElementById('field-screenshot').value = '';
+  document.getElementById('upi-desktop-msg').style.display = 'none';
+  document.getElementById('success-msg').classList.remove('active');
+  document.getElementById('order-form-wrap').style.display = 'block';
+}
 
-<div class="card">
-<a href="product.html?name=Signature Silver Ring&price=899">
-<img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638">
-<h3>Signature Silver Ring</h3>
-<p>₹899</p>
-</a>
-</div>
+// ── UPI PAYMENT ──
+function handleUPIPayment() {
+  if (!currentProduct) return;
+  const price = currentProduct.price;
+  const upiLink = `upi://pay?pa=9821201453@ptyes&pn=Noor-e-Chandi&am=${price}&cu=INR&tn=${encodeURIComponent(currentProduct.name)}`;
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (isMobile) {
+    window.location.href = upiLink;
+  } else {
+    const msg = document.getElementById('upi-desktop-msg');
+    msg.style.display = 'block';
+    msg.innerHTML = `📲 Open your UPI app and pay <strong style="color:var(--gold)">₹${price}</strong> to <strong style="color:var(--gold)">9821201453@ptyes</strong>, then upload your screenshot below.`;
+  }
+}
 
-</div>
+// ── CONFIRM ORDER ──
+function confirmOrder() {
+  const name = document.getElementById('field-name').value.trim();
+  const phone = document.getElementById('field-phone').value.trim();
+  const address = document.getElementById('field-address').value.trim();
+  const screenshot = document.getElementById('field-screenshot').files[0];
 
-</section>
+  if (!name) { showToast('Please enter your full name'); return; }
+  if (!phone || phone.length < 10) { showToast('Please enter a valid phone number'); return; }
+  if (!address) { showToast('Please enter your delivery address'); return; }
+  if (!screenshot) { showToast('Please upload your payment screenshot'); return; }
 
+  document.getElementById('order-form-wrap').style.display = 'none';
+  document.getElementById('success-msg').classList.add('active');
+}
 
-<section id="men" class="section">
+// ── TOAST ──
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
 
-<h2>Men's Collection</h2>
+// ── STICKY HEADER ──
+window.addEventListener('scroll', () => {
+  document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 20);
+});
 
-<div class="coming-soon">
-Launching Soon
-</div>
-
-</section>
-
-
-<section id="contact" class="section">
-
-<h2>Contact</h2>
-<p>WhatsApp orders available</p>
-
-<a href="https://wa.me/919821201453" class="whatsapp-btn">
-Order on WhatsApp
-</a>
-
-</section>
-
-
-<footer>
-
-© 2026 Noore-e-Chandi
-
-</footer>
-
-
-<script src="script.js"></script>
-
+// ── CLOSE MODAL ON OVERLAY CLICK ──
+document.getElementById('order-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeOrderModal();
+});
+</script>
 </body>
 </html>
