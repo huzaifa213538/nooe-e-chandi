@@ -1,22 +1,120 @@
-body {
-  font-family: sans-serif;
-  background: black;
-  color: gold;
-  text-align: center;
-}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
 
-.product {
-  border: 1px solid gold;
-  padding: 10px;
-  margin: 10px;
-}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-button {
-  background: gold;
-  border: none;
-  padding: 10px;
-}
+  :root {
+    --gold: #b8966e;
+    --gold-light: #d4b896;
+    --cream: #faf7f2;
+    --dark: #1a1612;
+    --mid: #4a4035;
+    --border: #e8ddd0;
+  }
 
-.hidden {
-  display: none;
-}
+  body {
+    background: var(--cream);
+    font-family: 'Jost', sans-serif;
+    color: var(--dark);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Navigation */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 28px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  .logo span { color: var(--gold); }
+
+  /* Hero */
+  .hero {
+    background: var(--dark);
+    padding: 48px 28px 40px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: #fdf8f3;
+    line-height: 1.2;
+  }
+  .hero h1 em { color: var(--gold-light); font-style: italic; }
+  .hero p {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: #a09080;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  /* Section labels */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 28px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  /* UPI Box */
+  .upi-box {
+    background: #fff;
+    border: 0.5px solid var(--border);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .upi-box h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+  .upi-id {
+    background: var(--cream);
+    border: 0.5px solid var(--border);
+    padding: 14px 20px;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  /* Button */
+  .btn-primary {
+    width: 100%;
+    padding: 16px;
+    background: var(--dark);
+    color: #fdf8f3;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    margin-top: 16px;
+  }
+  .btn-primary:hover { background: var(--gold); }
+
+  /* Content padding */
+  main { padding: 0 28px 40px; }
+</style>
